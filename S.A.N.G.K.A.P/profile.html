@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile | S.A.N.G.K.A.P.</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="profile">
+
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <span class="brand__mark" aria-hidden="true"></span>
+                <span class="brand__name">S.A.N.G.K.A.P.</span>
+            </a>
+
+            <button class="nav__toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <div class="nav__menu" id="navMenu">
+                <ul class="nav__links">
+                    <li><a href="index.html" data-nav="index">Home</a></li>
+                    <li><a href="basket.html" data-nav="basket">What&rsquo;s in Your Basket</a></li>
+                    <li><a href="recipes.html" data-nav="recipes">Recipes</a></li>
+                    <li><a href="community.html" data-nav="community">Community</a></li>
+                    <li><a href="featured.html" data-nav="featured">Featured</a></li>
+                    <li><a href="about.html" data-nav="about">About Us</a></li>
+                </ul>
+                <div class="nav__account" id="navAccount"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page">
+
+        <div id="profileRoot"></div>
+
+        <section class="panel section" id="profileEdit" hidden>
+            <h2 class="panel__title">Edit your profile</h2>
+            <div class="form-error" id="editError"></div>
+
+            <form id="profileEditForm" novalidate>
+                <div class="field">
+                    <label class="field__label" for="editDisplayName">Display Name</label>
+                    <input class="input" type="text" id="editDisplayName">
+                </div>
+
+                <div class="field">
+                    <label class="field__label" for="editImage">Profile Image URL</label>
+                    <input class="input" type="url" id="editImage" placeholder="https://">
+                    <span class="field__hint">Leave this empty to use the default picture.</span>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn--primary" type="submit">Save Changes</button>
+                    <button class="btn btn--quiet" type="button" id="cancelEdit">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="profile-stats" id="profileStats"></div>
+
+        <section class="section" id="recipesSection">
+            <div class="section-head">
+                <h2 id="recipesTitle">Recipes</h2>
+            </div>
+            <div class="grid grid--cards" id="profileRecipes"></div>
+        </section>
+
+        <section class="section" id="savedSection" hidden>
+            <div class="section-head">
+                <div>
+                    <h2>Saved recipes</h2>
+                    <p>Only you can see this list.</p>
+                </div>
+            </div>
+            <div class="grid grid--cards" id="savedRecipes"></div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer__inner">
+            <div>
+                <p class="footer__brand">S.A.N.G.K.A.P.</p>
+                <p class="footer__tagline">You bring the ingredients. S.A.N.G.K.A.P. brings the idea.</p>
+            </div>
+            <nav class="footer__links" aria-label="Footer">
+                <a href="index.html">Home</a><span>|</span>
+                <a href="basket.html">Basket</a><span>|</span>
+                <a href="recipes.html">Recipes</a><span>|</span>
+                <a href="community.html">Community</a><span>|</span>
+                 <a href="featured.html">Featured</a><span>|</span>
+                <a href="about.html">About Us</a>
+            </nav>
+            <p class="footer__note">Project Prototype</p>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/ratings.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/recipes.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

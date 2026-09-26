@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create an Account | S.A.N.G.K.A.P.</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="register">
+
+    <header class="site-header auth-header">
+        <div class="container nav">
+            <a class="brand" href="login.html">
+                <span class="brand__mark" aria-hidden="true"></span>
+                <span class="brand__name">S.A.N.G.K.A.P.</span>
+            </a>
+            <a class="btn btn--quiet btn--small" href="login.html">Login</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth">
+
+            <section class="auth__intro">
+                <h1>Join the kitchen</h1>
+                <p class="auth__slogan">Ano ang laman ng basket mo?</p>
+                <p class="auth__desc">
+                    An account lets you upload recipes, rate what you cook, and keep a saved list you can
+                    come back to.
+                </p>
+
+                <ul class="auth__points">
+                    <li>Your uploads join ingredient matching straight away, next to the built-in recipes.</li>
+                    <li>Ratings you give shape what the community sees on the Featured page.</li>
+                    <li>Browsing stays free. You only need an account to take part.</li>
+                </ul>
+            </section>
+
+            <section class="auth__card">
+                <h2>Create an account</h2>
+                <p class="muted small">Display name and profile image are optional.</p>
+
+                <div class="form-error" id="registerError"></div>
+
+                <form id="registerForm" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="registerUsername">Username</label>
+                        <input class="input" type="text" id="registerUsername" autocomplete="username">
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="registerEmail">Email</label>
+                        <input class="input" type="email" id="registerEmail" autocomplete="email">
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label class="field__label" for="registerPassword">Password</label>
+                            <input class="input" type="password" id="registerPassword" autocomplete="new-password">
+                            <span class="field__hint">At least 6 characters.</span>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="registerConfirm">Confirm Password</label>
+                            <input class="input" type="password" id="registerConfirm" autocomplete="new-password">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="registerDisplayName">Display Name</label>
+                        <input class="input" type="text" id="registerDisplayName" autocomplete="name">
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="registerImage">Profile Image URL</label>
+                        <input class="input" type="url" id="registerImage" placeholder="https://">
+                        <span class="field__hint">Leave this empty to use the default picture.</span>
+                    </div>
+
+                    <button class="btn btn--primary btn--block" type="submit">Create Account</button>
+                </form>
+
+                <p class="auth__switch">Already registered? <a href="login.html">Log in</a></p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer__inner">
+            <div>
+                <p class="footer__brand">S.A.N.G.K.A.P.</p>
+                <p class="footer__tagline">You bring the ingredients. S.A.N.G.K.A.P. brings the idea.</p>
+            </div>
+            <p class="footer__note">Project Prototype</p>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

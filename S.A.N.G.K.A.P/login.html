@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | S.A.N.G.K.A.P.</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+
+    <header class="site-header auth-header">
+        <div class="container nav">
+            <a class="brand" href="login.html">
+                <span class="brand__mark" aria-hidden="true"></span>
+                <span class="brand__name">S.A.N.G.K.A.P.</span>
+            </a>
+            <a class="btn btn--quiet btn--small" href="register.html">Create Account</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth">
+
+            <section class="auth__intro">
+                <h1>S.A.N.G.K.A.P.</h1>
+                <p class="auth__slogan">You bring the ingredients. S.A.N.G.K.A.P. brings the idea.</p>
+                <p class="auth__desc">Discover what you can cook using the ingredients you already have.</p>
+
+                <ul class="auth__points">
+                    <li>Add what is in your kitchen and get recipes ranked by how much of each one you can already make.</li>
+                    <li>Read, rate and save recipes shared by other home cooks.</li>
+                    <li>Upload your own recipes once you have an account.</li>
+                </ul>
+            </section>
+
+            <section class="auth__card">
+                <h2>Log in</h2>
+                <p class="muted small">Use the username or email you registered with.</p>
+
+                <div class="form-error" id="loginError"></div>
+
+                <form id="loginForm" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="loginIdentifier">Username or Email</label>
+                        <input class="input" type="text" id="loginIdentifier" name="identifier" autocomplete="username">
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="loginPassword">Password</label>
+                        <input class="input" type="password" id="loginPassword" name="password" autocomplete="current-password">
+                    </div>
+
+                    <button class="btn btn--primary btn--block" type="submit">Login</button>
+                </form>
+
+                <p class="auth__switch">No account yet? <a href="register.html">Create an Account</a></p>
+
+                <div class="auth__guest">
+                    <button class="btn btn--outline btn--block" type="button" id="guestButton">Proceed Without Login</button>
+                    <p>You can explore recipes and use ingredient recommendations without creating an account.</p>
+                </div>
+
+                <div class="demo-accounts">
+                    <h3>Demonstration accounts</h3>
+                    <ul>
+                        <li>maria, password123</li>
+                        <li>andrei, password123</li>
+                        <li>liza, password123</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer__inner">
+            <div>
+                <p class="footer__brand">S.A.N.G.K.A.P.</p>
+                <p class="footer__tagline">You bring the ingredients. S.A.N.G.K.A.P. brings the idea.</p>
+            </div>
+            <p class="footer__note">Project Prototype</p>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>S.A.N.G.K.A.P. | Cook with what you already have</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="index">
+
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <span class="brand__mark" aria-hidden="true"></span>
+                <span class="brand__name">S.A.N.G.K.A.P.</span>
+            </a>
+
+            <button class="nav__toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <div class="nav__menu" id="navMenu">
+                <ul class="nav__links">
+                    <li><a href="index.html" data-nav="index">Home</a></li>
+                    <li><a href="basket.html" data-nav="basket">What&rsquo;s in Your Basket</a></li>
+                    <li><a href="recipes.html" data-nav="recipes">Recipes</a></li>
+                    <li><a href="community.html" data-nav="community">Community</a></li>
+                    <li><a href="featured.html" data-nav="featured">Featured</a></li>
+                    <li><a href="about.html" data-nav="about">About Us</a></li>
+                </ul>
+                <div class="nav__account" id="navAccount"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="hero">
+                <div class="hero__copy">
+                    <p class="lead-note" id="heroGreeting">Anong lulutuin natin?</p>
+                    <h1 class="hero__title">What can you cook with what you already have?</h1>
+                    <p class="hero__text">
+                        Add the ingredients from your kitchen and let S.A.N.G.K.A.P. help you discover your next meal.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="basket.html">Check My Basket</a>
+                        <a class="btn btn--outline" href="community.html">Explore Community</a>
+                    </div>
+                </div>
+
+                <aside class="hero__panel">
+                    <h3>Your basket</h3>
+                    <p class="hero-basket__note" id="heroBasketNote"></p>
+                    <ul class="chip-list" id="heroBasketChips"></ul>
+                    <div class="hero-basket__arrow" aria-hidden="true"></div>
+                    <div class="hero-result" id="heroResult"></div>
+                </aside>
+            </section>
+
+            <section class="section">
+                <div class="panel">
+                    <h2 class="panel__title">How S.A.N.G.K.A.P. works</h2>
+                    <ol class="steps">
+                        <li><span>List the ingredients you already have at home. Nothing needs to be bought first.</span></li>
+                        <li><span>Every recipe is scored by how much of it you can make, weighted by how essential each missing ingredient is.</span></li>
+                        <li><span>Cook it, then rate it. Recipes the community rates highly rise into the Featured page.</span></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <h2>Featured by the community</h2>
+                        <p>Ranked by rating and by how many people have rated them.</p>
+                    </div>
+                    <a class="section-head__link" href="featured.html">See the full list</a>
+                </div>
+                <div class="grid grid--cards" id="featuredPreview"></div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <h2>Fresh from the community</h2>
+                        <p>Recipes uploaded by members of S.A.N.G.K.A.P.</p>
+                    </div>
+                    <a class="section-head__link" href="community.html">Open the community</a>
+                </div>
+                <div class="grid grid--cards" id="communityPreview"></div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <h2>Sponsored dishes</h2>
+                        <p>Paid placements from partner restaurants, kept separate from recipe results.</p>
+                    </div>
+                </div>
+                <div class="grid grid--wide" id="sponsoredPreview"></div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer__inner">
+            <div>
+                <p class="footer__brand">S.A.N.G.K.A.P.</p>
+                <p class="footer__tagline">You bring the ingredients. S.A.N.G.K.A.P. brings the idea.</p>
+            </div>
+            <nav class="footer__links" aria-label="Footer">
+                <a href="index.html">Home</a><span>|</span>
+                <a href="basket.html">Basket</a><span>|</span>
+                <a href="recipes.html">Recipes</a><span>|</span>
+                <a href="community.html">Community</a><span>|</span>
+                <a href="featured.html">Featured</a><span>|</span>
+                <a href="about.html">About Us</a>
+            </nav>
+            <p class="footer__note"> Project Prototype</p>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/ratings.js"></script>
+    <script src="js/recipes.js"></script>
+    <script src="js/basket.js"></script>
+    <script src="js/community.js"></script>
+    <script src="js/featured.js"></script>
+    <script src="js/sponsored.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us | S.A.N.G.K.A.P.</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="about">
+
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <span class="brand__mark" aria-hidden="true"></span>
+                <span class="brand__name">S.A.N.G.K.A.P.</span>
+            </a>
+
+            <button class="nav__toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <div class="nav__menu" id="navMenu">
+                <ul class="nav__links">
+                    <li><a href="index.html" data-nav="index">Home</a></li>
+                    <li><a href="basket.html" data-nav="basket">What&rsquo;s in Your Basket</a></li>
+                    <li><a href="recipes.html" data-nav="recipes">Recipes</a></li>
+                    <li><a href="community.html" data-nav="community">Community</a></li>
+                    <li><a href="featured.html" data-nav="featured">Featured</a></li>
+                    <li><a href="about.html" data-nav="about">About Us</a></li>
+                </ul>
+                <div class="nav__account" id="navAccount"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page">
+
+        <div class="page-head">
+            <p class="lead-note">Ang mga nasa likod ng S.A.N.G.K.A.P.</p>
+            <h1>About Us</h1>
+        </div>
+
+        <section class="grid grid--team">
+
+            <div class="team-card">
+                <img class="team-card__photo" src="assets/Devs/Salad.jpg" alt="Photo of SAPAD" data-fallback="assets/images/placeholder.svg">
+                <p class="team-card__name">John Michael Sapad</p>
+                <p class="team-card__position">?</p>
+            </div>
+
+            <div class="team-card">
+                <img class="team-card__photo" src="assets/Devs/Picture.jpg" alt="Photo of JIMUEL " data-fallback="assets/images/placeholder.svg">
+                <p class="team-card__name">Jimuel Tandaguen</p>
+                <p class="team-card__position">?</p>
+            </div>
+
+            <div class="team-card">
+                <img class="team-card__photo" src="assets/Devs/Ace.jpg" alt="Photo of Team ACE" data-fallback="assets/images/placeholder.svg">
+                <p class="team-card__name">Ace Martin Aganon</p>
+                <p class="team-card__position">?</p>
+            </div>
+
+            <div class="team-card">
+                <img class="team-card__photo" src="assets/Devs/tips.jpg" alt="Photo of Justine" data-fallback="assets/images/placeholder.svg">
+                <p class="team-card__name">Justine Carl Tipay</p>
+                <p class="team-card__position">?</p>
+            </div>
+
+            <div class="team-card">
+                <img class="team-card__photo" src="assets/Devs/shared image.jpg" alt="Photo of JOWEN" data-fallback="assets/images/placeholder.svg">
+                <p class="team-card__name">Jowen Marc Macadangdang</p>
+                <p class="team-card__position">?</p>
+            </div>
+
+        </section>
+
+        
+
+        <div class="panel section" id="contactUs">
+            <h2 class="panel__title">Contact Us</h2>
+            <p class="small muted">
+                Questions, feedback or bug reports about S.A.N.G.K.A.P.? Send us an email.
+                Sample address below &mdash; replace it with your own team&rsquo;s inbox.
+            </p>
+            <a class="btn btn--primary" href="mailto:sangkap.team@gmail.com">sangkap.team@gmail.com</a>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer__inner">
+            <div>
+                <p class="footer__brand">S.A.N.G.K.A.P.</p>
+                <p class="footer__tagline">You bring the ingredients. S.A.N.G.K.A.P. brings the idea.</p>
+            </div>
+            <nav class="footer__links" aria-label="Footer">
+                <a href="index.html">Home</a><span>|</span>
+                <a href="basket.html">Basket</a><span>|</span>
+                <a href="recipes.html">Recipes</a><span>|</span>
+                <a href="community.html">Community</a><span>|</span>
+                <a href="featured.html">Featured</a><span>|</span>
+                <a href="about.html">About Us</a>
+            </nav>
+            <p class="footer__note">Project Prototype</p>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
