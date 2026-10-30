@@ -1,11 +1,5 @@
 /*
     S.A.N.G.K.A.P. - database.js
-
-    This file is the single source of truth for the prototype's data.
-    Every page reads and writes recipes, users, ratings and favorites
-    through the helpers below, so the Basket, Community, Featured and
-    Profile pages always see exactly the same records.
-
     Shape of the stored data:
 
         database = {

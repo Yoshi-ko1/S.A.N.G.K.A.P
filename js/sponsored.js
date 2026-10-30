@@ -1,11 +1,6 @@
 /*
     S.A.N.G.K.A.P. - sponsored.js
-
-    Mock restaurant placements for the prototype. They are always labelled
-    Sponsored and are never mixed into the recipe results, so a paid listing
-    can never be mistaken for a community recipe.
-
-    No payment processing of any kind is part of this project.
+    No payment processing of any kind is part of this project. this is just sample
 */
 
 const SPONSORED_DISHES = [

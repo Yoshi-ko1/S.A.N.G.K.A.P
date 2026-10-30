@@ -119,7 +119,7 @@ GO
 
 /* ---------- Demo data (5 users, 30 recipes) ----------
    Demo accounts: maria, andrei, liza, kenji, grace  (password: password123)
-   The hashes are scrypt hashes made by the Node backend.                   */
+   The hashes are scrypt hashes made by the Node backend.*/
 SET NOCOUNT ON;
 SET IDENTITY_INSERT dbo.users ON;
 INSERT dbo.users (id,username,email,password_hash,display_name,profile_image,role,created_at) VALUES (1,N'maria',N'maria@sangkap.test',N'scrypt$8cecd9378d0716bd6b05c91e24627529$13fbcb8d6e1199a37dd8ee9ce4fc9c933cc2193fdc12f559743d2852724a620f920b9fdda699a8ee7e82aacca7aed45fb06ebc4ab88c3e1c3d2d8f595992f20d',N'Maria Santos',N'',N'user','2026-07-02T08:00:00.000');

@@ -1,5 +1,4 @@
 // S.A.N.G.K.A.P. web server: serves the website and a JSON API backed by SQL Server.
-// Run:  npm start     then open  http://localhost:3000
 const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");

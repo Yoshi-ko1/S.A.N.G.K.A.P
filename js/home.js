@@ -1,6 +1,5 @@
 /*
     S.A.N.G.K.A.P. - home.js
-
     The homepage shows previews only. The full systems live on
     basket.html, recipes.html, community.html and featured.html.
 */
