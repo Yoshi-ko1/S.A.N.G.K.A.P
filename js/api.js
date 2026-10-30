@@ -1,21 +1,5 @@
 /*
     S.A.N.G.K.A.P. - api.js
-
-    Connects the pages to the SQL Server database through the Node server.
-
-    How it works
-      - When the site is opened from the Node server (http://localhost:3000), this file
-        loads every user, recipe, rating and favorite from SQL Server into the same
-        localStorage keys the pages already read. The database is the source of truth,
-        so whatever is in localStorage is replaced on each page load.
-      - Every save (register, login, new recipe, rating, favorite, basket, profile)
-        is sent to the server, which writes it to the database.
-      - If the server is not reachable (for example the HTML files are opened directly),
-        SangkapAPI.enabled stays false and the site works exactly as before, using
-        localStorage only.
-
-    Requests are synchronous on purpose: the existing page scripts read their data
-    right away, so the data has to be in place before they run.
 */
 
 const SangkapAPI = {
