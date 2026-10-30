@@ -1,6 +1,3 @@
-
-
-
 /* A few everyday spellings that should be treated as the same ingredient. */
 const INGREDIENT_ALIASES = {
     "egg": "egg",
@@ -38,8 +35,7 @@ const INGREDIENT_ALIASES = {
 };
 
 /**
- * Brings any spelling of an ingredient to one comparable form, so that
- * Chicken, chicken and CHICKEN are all the same thing.
+ * Brings any spelling of an ingredient to one comparable form, so thatChicken, chicken and CHICKEN are all the same thing.
  */
 function normalizeIngredient(value) {
     if (typeof value !== "string") {
