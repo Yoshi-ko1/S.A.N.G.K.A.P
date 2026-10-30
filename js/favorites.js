@@ -41,6 +41,9 @@ function addFavorite(userId, recipeId) {
         dateSaved: new Date().toISOString()
     });
     saveFavorites(favorites);
+    if (SangkapAPI.enabled) {
+        SangkapAPI.call("PUT", "/api/favorites/" + encodeURIComponent(recipeId));
+    }
     return true;
 }
 
@@ -49,6 +52,9 @@ function removeFavorite(userId, recipeId) {
         return !(favorite.userId === userId && favorite.recipeId === recipeId);
     });
     saveFavorites(favorites);
+    if (SangkapAPI.enabled) {
+        SangkapAPI.call("DELETE", "/api/favorites/" + encodeURIComponent(recipeId));
+    }
     return true;
 }
 

@@ -1,0 +1,9 @@
+{
+  "name": "sangkap",
+  "version": "1.0.0",
+  "private": true,
+  "description": "S.A.N.G.K.A.P. recipe website with a SQL Server database",
+  "scripts": { "start": "node backend/server.js" },
+  "engines": { "node": ">=20.12" },
+  "dependencies": { "mssql": "^11.0.1" }
+}

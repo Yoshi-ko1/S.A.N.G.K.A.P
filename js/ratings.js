@@ -153,6 +153,9 @@ function addRating(recipeId, userId, value) {
 
     ratings.push(record);
     saveRatings(ratings);
+    if (SangkapAPI.enabled) {
+        SangkapAPI.call("POST", "/api/recipes/" + encodeURIComponent(recipeId) + "/rate", { rating: Number(value) });
+    }
     return record;
 }
 
@@ -169,6 +172,9 @@ function updateRating(ratingId, value) {
     ratings[index].rating = Number(value);
     ratings[index].dateCreated = new Date().toISOString();
     saveRatings(ratings);
+    if (SangkapAPI.enabled) {
+        SangkapAPI.call("POST", "/api/recipes/" + encodeURIComponent(ratings[index].recipeId) + "/rate", { rating: Number(value) });
+    }
     return ratings[index];
 }
 

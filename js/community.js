@@ -235,6 +235,10 @@ function submitCommunityRecipe(data, user) {
         communityRecipe: true
     });
 
+    if (!recipe) {
+        return { success: false, message: SangkapAPI.lastError || "The recipe could not be saved." };
+    }
+
     return { success: true, message: "Recipe shared.", recipe: recipe };
 }
 
@@ -379,7 +383,7 @@ function initSubmitRecipePage() {
                 return;
             }
 
-            updateRecipe(editing.id, {
+            const updated = updateRecipe(editing.id, {
                 title: data.title,
                 description: data.description,
                 image: data.image || "assets/images/placeholder.svg",
@@ -390,6 +394,11 @@ function initSubmitRecipePage() {
                 instructions: data.instructions,
                 tags: data.tags
             });
+
+            if (!updated) {
+                errorBox.textContent = SangkapAPI.lastError || "The recipe could not be updated.";
+                return;
+            }
 
             setFlashMessage("Your recipe was updated.", "success");
             window.location.href = "recipe-details.html?id=" + encodeURIComponent(editing.id);

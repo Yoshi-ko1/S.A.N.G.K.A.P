@@ -182,7 +182,10 @@ function initRecipeDetailsPage() {
                 message: "This removes " + recipe.title + " along with its ratings and saved copies. It cannot be undone.",
                 confirmLabel: "Delete Recipe",
                 onConfirm: function () {
-                    deleteRecipe(recipe.id);
+                    if (deleteRecipe(recipe.id) === false) {
+                        showNotification(SangkapAPI.lastError || "The recipe could not be deleted.", "error");
+                        return;
+                    }
                     setFlashMessage("The recipe was deleted.", "info");
                     window.location.href = "community.html";
                 }

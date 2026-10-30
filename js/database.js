@@ -1199,6 +1199,18 @@ function createUser(details) {
 }
 
 function updateUser(userId, changes) {
+    /* With the database connected, the server saves the profile first. */
+    if (SangkapAPI.enabled && ("displayName" in changes || "profileImage" in changes)) {
+        const saved = SangkapAPI.call("PUT", "/api/me", {
+            displayName: changes.displayName,
+            profileImage: changes.profileImage
+        });
+        if (!saved.ok) {
+            return null;
+        }
+        changes = Object.assign({}, changes, { displayName: saved.data.user.displayName, profileImage: saved.data.user.profileImage });
+    }
+
     const users = getUsers();
     const index = users.findIndex(function (user) {
         return user.id === userId;
@@ -1238,6 +1250,17 @@ function getRecipeById(recipeId) {
  * ratings at all, so their average is genuinely zero until someone rates them.
  */
 function addRecipe(recipe) {
+    if (SangkapAPI.enabled) {
+        const saved = SangkapAPI.call("POST", "/api/recipes", recipe);
+        if (!saved.ok) {
+            return null;
+        }
+        const list = getRecipes();
+        list.push(saved.data.recipe);
+        saveRecipes(list);
+        return saved.data.recipe;
+    }
+
     const recipes = getRecipes();
     const record = Object.assign({}, recipe, {
         id: generateId("REC", recipes),
@@ -1254,6 +1277,18 @@ function addRecipe(recipe) {
 }
 
 function updateRecipe(recipeId, changes) {
+    /* Only edits to the recipe's content go to the server. Rating totals and the
+       copied author name are already worked out by the database. */
+    const contentFields = ["title", "description", "image", "category", "cookingTime", "difficulty", "ingredients", "instructions", "tags"];
+    const isContentEdit = contentFields.some(function (field) { return field in changes; });
+    if (SangkapAPI.enabled && isContentEdit) {
+        const merged = Object.assign({}, getRecipeById(recipeId), changes);
+        const saved = SangkapAPI.call("PUT", "/api/recipes/" + encodeURIComponent(recipeId), merged);
+        if (!saved.ok) {
+            return null;
+        }
+    }
+
     const recipes = getRecipes();
     const index = recipes.findIndex(function (recipe) {
         return recipe.id === recipeId;
@@ -1273,6 +1308,13 @@ function updateRecipe(recipeId, changes) {
  * so no orphan records are left behind.
  */
 function deleteRecipe(recipeId) {
+    if (SangkapAPI.enabled) {
+        const removed = SangkapAPI.call("DELETE", "/api/recipes/" + encodeURIComponent(recipeId));
+        if (!removed.ok) {
+            return false;
+        }
+    }
+
     const recipes = getRecipes().filter(function (recipe) {
         return recipe.id !== recipeId;
     });

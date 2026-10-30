@@ -113,6 +113,21 @@ function registerUser(details) {
         return { success: false, message: "This email is already registered." };
     }
 
+    if (SangkapAPI.enabled) {
+        const saved = SangkapAPI.call("POST", "/api/register", {
+            username: username,
+            email: email,
+            password: password,
+            displayName: displayName || username,
+            profileImage: profileImage
+        });
+        if (!saved.ok) {
+            return { success: false, message: SangkapAPI.lastError };
+        }
+        SangkapAPI.pull();
+        return { success: true, message: "Account created.", user: getUserById(saved.data.user.id) };
+    }
+
     const user = createUser({
         username: username,
         email: email,
@@ -137,6 +152,15 @@ function loginUser(identifier, password) {
         return { success: false, message: "Enter your password." };
     }
 
+    if (SangkapAPI.enabled) {
+        const signedIn = SangkapAPI.call("POST", "/api/login", { identifier: value, password: password });
+        if (!signedIn.ok) {
+            return { success: false, message: SangkapAPI.lastError };
+        }
+        SangkapAPI.pull();
+        return { success: true, message: "Signed in.", user: getUserById(signedIn.data.user.id) };
+    }
+
     const user = getUserByUsername(value) || getUserByEmail(value);
 
     if (!user) {
@@ -159,6 +183,9 @@ function loginUser(identifier, password) {
  * Clears the session only. Accounts, recipes, ratings and favorites all stay.
  */
 function logoutUser() {
+    if (SangkapAPI.enabled) {
+        SangkapAPI.call("POST", "/api/logout");
+    }
     removeFromLocalStorage(SANGKAP_KEYS.SESSION);
     setFlashMessage("You have successfully logged out.", "info");
     window.location.href = "login.html";

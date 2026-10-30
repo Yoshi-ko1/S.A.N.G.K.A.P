@@ -6,10 +6,6 @@
     formatting helpers.
 */
 
-/* ---------------------------------------------------------------
-   Helpers
-   --------------------------------------------------------------- */
-
 /**
  * Escapes text before it is placed inside generated markup.
  * Recipe titles and display names come from users, so they are never trusted.

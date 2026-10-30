@@ -23,6 +23,9 @@ function getBasket() {
 }
 
 function saveBasket(items) {
+    if (SangkapAPI.isSignedIn()) {
+        SangkapAPI.call("PUT", "/api/basket", { ingredients: items });
+    }
     return saveToLocalStorage(SANGKAP_KEYS.BASKET, items);
 }
 
@@ -60,6 +63,9 @@ function removeFromBasket(name) {
 }
 
 function clearBasket() {
+    if (SangkapAPI.isSignedIn()) {
+        SangkapAPI.call("PUT", "/api/basket", { ingredients: [] });
+    }
     removeFromLocalStorage(SANGKAP_KEYS.BASKET);
     return [];
 }
