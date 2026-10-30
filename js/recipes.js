@@ -1,5 +1,3 @@
-
-
 function getAllRecipes() {
     return getRecipes();
 }
