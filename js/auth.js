@@ -21,9 +21,7 @@ A real version should use:
    Session handling
    --------------------------------------------------------------- */
 
-/**
- * Returns the stored session object, or null when nobody has entered the site.
- */
+/*Returns the stored session object, or null when nobody has entered the site.*/
 function getCurrentSession() {
     return loadFromLocalStorage(SANGKAP_KEYS.SESSION, null);
 }

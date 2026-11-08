@@ -1,4 +1,3 @@
-/* Creates the account the website will use to reach SangkapDB. */
 USE master;
 GO
 IF NOT EXISTS (SELECT 1 FROM sys.server_principals WHERE name = N'sangkap_app')
