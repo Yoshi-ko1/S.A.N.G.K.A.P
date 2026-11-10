@@ -1,25 +1,12 @@
 /*
 S.A.N.G.K.A.P. Prototype Authentication System
-
 This frontend-only project uses localStorage to simulate
 user accounts, sessions, recipes, ratings, and favorites.
-
 Passwords are stored locally for demonstration purposes only.
 
-This method is not secure enough for a real production website.
-
-A real version should use:
-- Secure backend authentication
-- Password hashing
-- Server-side validation
-- Database server
-- Secure sessions
-- Input sanitization
-*/
-
-/* ---------------------------------------------------------------
+/* 
    Session handling
-   --------------------------------------------------------------- */
+ */
 
 /*Returns the stored session object, or null when nobody has entered the site.*/
 function getCurrentSession() {

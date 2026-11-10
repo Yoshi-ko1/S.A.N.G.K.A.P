@@ -1,4 +1,9 @@
-﻿USE master;
+﻿/* ============================================================
+   S.A.N.G.K.A.P. - SQL Server (T-SQL) database
+   Open in SQL Server Management Studio and press Execute (F5).
+   Safe to re-run: it drops and rebuilds the SangkapDB database.
+   ============================================================ */
+USE master;
 GO
 IF DB_ID(N'SangkapDB') IS NOT NULL
 BEGIN
@@ -113,7 +118,9 @@ GROUP BY r.id, r.base_rating_total, r.base_rating_count;
 GO
 
 /* ---------- Demo data (5 users, 30 recipes) ----------
-   Demo accounts: maria, andrei, liza, kenji, grace  (password: password123)*/
+   Demo accounts: maria, andrei, liza, kenji, grace (password: password123)
+   The hashes are scrypt hashes made by the Node backend.
+*/
 SET NOCOUNT ON;
 SET IDENTITY_INSERT dbo.users ON;
 INSERT dbo.users (id,username,email,password_hash,display_name,profile_image,role,created_at) VALUES (1,N'maria',N'maria@sangkap.test',N'scrypt$8cecd9378d0716bd6b05c91e24627529$13fbcb8d6e1199a37dd8ee9ce4fc9c933cc2193fdc12f559743d2852724a620f920b9fdda699a8ee7e82aacca7aed45fb06ebc4ab88c3e1c3d2d8f595992f20d',N'Maria Santos',N'',N'user','2026-07-02T08:00:00.000');
@@ -123,9 +130,6 @@ INSERT dbo.users (id,username,email,password_hash,display_name,profile_image,rol
 INSERT dbo.users (id,username,email,password_hash,display_name,profile_image,role,created_at) VALUES (5,N'grace',N'grace@sangkap.test',N'scrypt$ce377976afa960eb5e92159c58122830$82a20ae1b0400a561376bc49e9151ae6a808efd52acd76a969be605d20eb5d63345a933730e50ef682f81ffad233e9a3aa7db75c91908a213500e787b22a03fa',N'Grace Villanueva',N'',N'user','2026-09-01T08:00:00.000');
 SET IDENTITY_INSERT dbo.users OFF;
 GO
-
-
-
 SET IDENTITY_INSERT dbo.recipes ON;
 INSERT dbo.recipes (id,title,description,image,category,cooking_time,difficulty,author_id,author_name,is_community,base_rating_total,base_rating_count,created_at) VALUES (1,N'Chicken Adobo',N'Chicken simmered in soy sauce, vinegar and plenty of garlic until the sauce turns glossy.',N'assets/images/manoknaadobo.jpg',N'Chicken',45,N'Easy',NULL,N'S.A.N.G.K.A.P. Kitchen',0,2016.0,420,'2026-06-04T09:00:00.000');
 INSERT dbo.recipes (id,title,description,image,category,cooking_time,difficulty,author_id,author_name,is_community,base_rating_total,base_rating_count,created_at) VALUES (2,N'Pork Adobo',N'Pork belly braised low and slow in vinegar and soy sauce until the fat turns tender.',N'assets/images/PORKNAADBO.jpg',N'Pork',55,N'Easy',NULL,N'S.A.N.G.K.A.P. Kitchen',0,1457.0,310,'2026-06-06T09:00:00.000');
@@ -600,3 +604,7 @@ SELECT COUNT(*) AS users   FROM dbo.users;
 SELECT COUNT(*) AS recipes FROM dbo.recipes;
 SELECT TOP 5 r.title, s.rating_avg, s.rating_count FROM dbo.recipes r JOIN dbo.recipe_stats s ON s.recipe_id = r.id ORDER BY s.rating_avg DESC;
 
+/* Add a new user (your app must hash the password first):
+   INSERT dbo.users (username,email,password_hash,display_name) VALUES (N'newuser', N'new@mail.com', N'<hash>', N'New User');
+   Add a recipe, then its ingredients/steps:
+   INSERT dbo.recipes (title,cooking_time,author_id,author_name,is_community) VALUES (N'My Dish', 20, 6, N'New User', 1); */

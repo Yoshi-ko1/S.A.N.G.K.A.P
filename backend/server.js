@@ -1,10 +1,12 @@
 // S.A.N.G.K.A.P. web server: serves the website and a JSON API backed by SQL Server.
+// Run:  npm start     then open  http://localhost:3000
 const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const { connect, q, transaction } = require("./db");
 const { hashPassword, verifyPassword } = require("./passwords");
+const { saveImage, allowUpload } = require("./uploads");
 
 const ROOT = path.join(__dirname, "..");
 const SESSION_DAYS = 14;
@@ -28,10 +30,10 @@ const iso = d => (d instanceof Date ? d.toISOString() : d);
 const str = (v, max = 200) => String(v ?? "").trim().slice(0, max);
 
 /* ---------- request helpers ---------- */
-function readBody(req) {
+function readBody(req, limit = 1e6) {
     return new Promise((resolve, reject) => {
         let data = "";
-        req.on("data", c => { data += c; if (data.length > 1e6) { reject(new HttpError(413, "Request too large.")); req.destroy(); } });
+        req.on("data", c => { data += c; if (data.length > limit) { reject(new HttpError(413, "Request too large.")); req.destroy(); } });
         req.on("end", () => { try { resolve(data ? JSON.parse(data) : {}); } catch { reject(new HttpError(400, "Invalid JSON.")); } });
     });
 }
@@ -140,6 +142,15 @@ async function api(req, res, url) {
             basket = (await q("SELECT ingredient FROM dbo.basket_items WHERE user_id = @u", { u: me.id })).map(i => i.ingredient);
         }
         return send(res, 200, { me: me ? publicUser(me, true) : null, users, recipes: await loadRecipes(), ratings, favorites, basket });
+    }
+
+    // Picture upload: the browser sends a shrunken picture, the server saves it as a file
+    // and returns its path, which is then stored in the database with the recipe or profile.
+    if (m === "POST" && p === "/api/upload") {
+        if (!allowUpload(req.socket.remoteAddress)) fail(429, "Too many uploads. Try again in an hour.");
+        const b = await readBody(req, 3e6);
+        try { return send(res, 201, { path: saveImage(b.data) }); }
+        catch (e) { if (e.userMessage) fail(400, e.userMessage); throw e; }
     }
 
     if (m === "POST" && p === "/api/register") {

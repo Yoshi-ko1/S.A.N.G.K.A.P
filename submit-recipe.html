@@ -76,9 +76,9 @@
                     </div>
 
                     <div class="field">
-                        <label class="field__label" for="recipeImage">Image URL</label>
-                        <input class="input" type="url" id="recipeImage" placeholder="https://">
-                        <span class="field__hint">Optional. A placeholder drawing is used when this is empty or the link breaks.</span>
+                        <label class="field__label" for="recipeImageFile">Dish Picture</label>
+                        <input type="hidden" id="recipeImage" data-image-picker data-max-side="1000" data-shape="wide">
+                        <span class="field__hint">Optional. Choose a JPG, PNG or WebP photo of the dish. A placeholder drawing is used when this is empty.</span>
                     </div>
 
                     <div class="field-row">
@@ -171,6 +171,7 @@
     <script src="js/database.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/upload.js"></script>
     <script src="js/recommendation.js"></script>
     <script src="js/ratings.js"></script>
     <script src="js/recipes.js"></script>

@@ -1,6 +1,5 @@
 /*
     S.A.N.G.K.A.P. - basket.js
-
     The basket is a plain list of normalised ingredient names kept in
     localStorage under sangkap_basket. Guests and registered users use the
     same basket, which is why guests can still get recommendations.

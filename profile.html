@@ -48,9 +48,9 @@
                 </div>
 
                 <div class="field">
-                    <label class="field__label" for="editImage">Profile Image URL</label>
-                    <input class="input" type="url" id="editImage" placeholder="https://">
-                    <span class="field__hint">Leave this empty to use the default picture.</span>
+                    <label class="field__label" for="editImageFile">Profile Picture</label>
+                    <input type="hidden" id="editImage" data-image-picker data-max-side="400" data-shape="round">
+                    <span class="field__hint">Optional. Choose a JPG, PNG or WebP picture. Leave it empty to use the default picture.</span>
                 </div>
 
                 <div class="form-actions">
@@ -109,5 +109,6 @@
     <script src="js/favorites.js"></script>
     <script src="js/recipes.js"></script>
     <script src="js/profile.js"></script>
+    <script src="js/upload.js"></script>
 </body>
 </html>
