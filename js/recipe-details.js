@@ -1,6 +1,5 @@
 /*
     S.A.N.G.K.A.P. - recipe-details.js
-
     Reads recipe-details.html?id=REC001, then draws the recipe together with
     the Available and Missing ingredient lists worked out from the basket.
 */

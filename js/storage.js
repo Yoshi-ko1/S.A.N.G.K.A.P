@@ -1,6 +1,5 @@
 /*
     S.A.N.G.K.A.P. - storage.js
-
     Every read and write to localStorage in this project goes through this file.
     Nothing else should call localStorage directly, so that corrupted or missing
     data is handled in exactly one place.
@@ -18,8 +17,8 @@ const SANGKAP_KEYS = {
 };
 
 /**
- * Some browsers block localStorage (private mode, disabled cookies).
- * Checking once keeps the rest of the app from throwing.
+Some browsers block localStorage (private mode, disabled cookies).
+Checking once keeps the rest of the app from throwing.
  */
 function isStorageAvailable() {
     try {
@@ -34,7 +33,7 @@ function isStorageAvailable() {
 }
 
 /**
- * Saves any JavaScript value as JSON. Returns true when the write succeeded.
+Saves any JavaScript value as JSON. Returns true when the write succeeded.
  */
 function saveToLocalStorage(key, data) {
     if (!isStorageAvailable()) {
@@ -50,9 +49,9 @@ function saveToLocalStorage(key, data) {
 }
 
 /**
- * Reads JSON back out of localStorage.
- * If the stored text is missing or malformed the fallback value is returned
- * instead, and the broken entry is cleared so the site keeps working.
+Reads JSON back out of localStorage.
+If the stored text is missing or malformed the fallback value is returned
+instead, and the broken entry is cleared so the site keeps working.
  */
 function loadFromLocalStorage(key, fallback) {
     if (!isStorageAvailable()) {
@@ -82,7 +81,7 @@ function loadFromLocalStorage(key, fallback) {
 }
 
 /**
- * Removes a single key. Used by logout and by Clear Basket.
+Removes a single key. Used by logout and by Clear Basket.
  */
 function removeFromLocalStorage(key) {
     if (!isStorageAvailable()) {

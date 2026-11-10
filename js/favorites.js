@@ -1,10 +1,7 @@
 /*
     S.A.N.G.K.A.P. - favorites.js
-
     A favorite is stored as:
-
         { userId, recipeId, dateSaved }
-
     Only registered users can save. Guests see the login modal instead.
 */
 
@@ -27,7 +24,7 @@ function isFavorite(userId, recipeId) {
 }
 
 /**
- * Saves a recipe. The duplicate check happens here, not in the page code.
+Saves a recipe. The duplicate check happens here, not in the page code.
  */
 function addFavorite(userId, recipeId) {
     if (isFavorite(userId, recipeId)) {
@@ -68,8 +65,8 @@ function toggleFavorite(userId, recipeId) {
 }
 
 /**
- * The full recipe records a user has saved, newest first.
- * Recipes that were deleted in the meantime are skipped.
+The full recipe records a user has saved, newest first.
+Recipes that were deleted in the meantime are skipped.
  */
 function getUserFavoriteRecipes(userId) {
     return getUserFavorites(userId)
@@ -86,7 +83,7 @@ function getUserFavoriteRecipes(userId) {
 }
 
 /**
- * Connects the Save Recipe button on the details page.
+Connects the Save Recipe button on the details page.
  */
 function bindSaveButton(button, recipeId) {
     if (!button) {

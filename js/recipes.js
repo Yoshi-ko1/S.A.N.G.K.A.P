@@ -3,8 +3,8 @@ function getAllRecipes() {
 }
 
 /**
- * Reads recipe-details.html?id=REC001 and returns the record, or null when the
- * id is missing or points at something that no longer exists.
+Reads recipe-details.html?id=REC001 and returns the record, or null when the
+id is missing or points at something that no longer exists.
  */
 function getRecipeFromQueryString() {
     const id = getQueryParam("id");
@@ -56,7 +56,7 @@ function searchRecipes(recipes, term) {
 }
 
 /**
- * filters looks like { tags: ["budget"], difficulty: "Easy" }.
+filters looks like { tags: ["budget"], difficulty: "Easy" }.
  */
 function recipePassesFilters(recipe, filters) {
     const settings = filters || {};
@@ -79,14 +79,14 @@ function filterRecipes(recipes, filters) {
     });
 }
 
-/* ---------------------------------------------------------------
-   Cards
-   --------------------------------------------------------------- */
+/*
+Cards
+*/
 
 /**
- * Builds one recipe card.
- * entry may be a plain recipe or a recommendation object produced by
- * sortRecipeRecommendations().
+Builds one recipe card.
+entry may be a plain recipe or a recommendation object produced by
+sortRecipeRecommendations().
  */
 function createRecipeCardHtml(entry, options) {
     const settings = options || {};
@@ -148,7 +148,7 @@ function createRecipeCardHtml(entry, options) {
 }
 
 /**
- * Paints a list of cards into a container and applies the match meters.
+Paints a list of cards into a container and applies the match meters.
  */
 function renderRecipeCards(container, entries, options) {
     if (!container) {
@@ -170,7 +170,7 @@ function renderRecipeCards(container, entries, options) {
 }
 
 /**
- * Shared empty state block.
+Shared empty state block.
  */
 function renderEmptyState(container, title, text, actionLabel, actionHref) {
     if (!container) {
@@ -185,9 +185,9 @@ function renderEmptyState(container, title, text, actionLabel, actionHref) {
         '<div class="empty"><h3>' + escapeHtml(title) + "</h3><p>" + escapeHtml(text) + "</p>" + action + "</div>";
 }
 
-/* ---------------------------------------------------------------
+/*
    recipes.html
-   --------------------------------------------------------------- */
+*/
 function initRecipesPage() {
     const results = document.getElementById("recipeResults");
     const countLabel = document.getElementById("resultsCount");

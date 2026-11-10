@@ -1,10 +1,7 @@
 /*
     S.A.N.G.K.A.P. - featured.js
-
     Featured is decided by the community, not chosen by hand.
-
         FeaturedScore = Rating x log10(RatingCount + 1)
-
     A recipe needs at least 10 ratings before it can be featured, so a single
     five-star rating cannot push a brand new recipe to the top. The score is
     always calculated on the spot and never stored.
@@ -27,7 +24,7 @@ function getFeaturedRecipes() {
 }
 
 /**
- * Ranked row used on featured.html.
+Ranked row used on featured.html.
  */
 function createFeaturedRowHtml(recipe, rank) {
     const link = "recipe-details.html?id=" + encodeURIComponent(recipe.id);

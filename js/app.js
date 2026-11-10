@@ -1,14 +1,13 @@
 /*
     S.A.N.G.K.A.P. - app.js
-
     Interface features shared by every page: navigation state, the mobile menu,
     notifications, the login-required modal, image fallbacks and a few small
     formatting helpers.
 */
 
 /**
- * Escapes text before it is placed inside generated markup.
- * Recipe titles and display names come from users, so they are never trusted.
+Escapes text before it is placed inside generated markup.
+Recipe titles and display names come from users, so they are never trusted.
  */
 function escapeHtml(value) {
     return String(value === null || value === undefined ? "" : value)
@@ -40,7 +39,7 @@ const MONTH_NAMES = [
 ];
 
 /**
- * Turns an ISO date into something readable, for example September 14, 2026.
+Turns an ISO date into something readable, for example September 14, 2026.
  */
 function formatDate(isoString) {
     const date = new Date(isoString);
@@ -70,8 +69,8 @@ function formatMinutes(minutes) {
 }
 
 /**
- * Progress bars carry their value in a data attribute so the stylesheet stays
- * free of inline width declarations. This applies them after rendering.
+Progress bars carry their value in a data attribute so the stylesheet stays
+free of inline width declarations. This applies them after rendering.
  */
 function applyMeters(root) {
     const scope = root || document;
@@ -81,9 +80,9 @@ function applyMeters(root) {
     });
 }
 
-/* ---------------------------------------------------------------
+/* 
    Notifications
-   --------------------------------------------------------------- */
+*/
 const CLOSE_ICON = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.3 0 6 4.7 10.7 0 12 1.3 7.3 6 12 10.7 10.7 12 6 7.3 1.3 12 0 10.7 4.7 6 0 1.3z"/></svg>';
 
 function getToastStack() {
@@ -97,7 +96,7 @@ function getToastStack() {
 }
 
 /**
- * Shows a short message in the corner. Type is success, error or info.
+Shows a short message in the corner. Type is success, error or info.
  */
 function showNotification(message, type) {
     if (!message) {
@@ -129,7 +128,7 @@ function showNotification(message, type) {
 }
 
 /**
- * Stores a message that should appear on the next page, used after redirects.
+Stores a message that should appear on the next page, used after redirects.
  */
 function setFlashMessage(message, type) {
     saveToLocalStorage(SANGKAP_KEYS.FLASH, { message: message, type: type || "info" });
@@ -143,9 +142,9 @@ function consumeFlashMessage() {
     }
 }
 
-/* ---------------------------------------------------------------
+/*
    Modal
-   --------------------------------------------------------------- */
+*/
 function getModalLayer() {
     let layer = document.getElementById("appModal");
     if (layer) {
@@ -180,8 +179,8 @@ function closeModal() {
 }
 
 /**
- * Opens the shared modal.
- * actions is a list of { label, href, variant, onClick } objects.
+Opens the shared modal.
+actions is a list of { label, href, variant, onClick } objects.
  */
 function openModal(options) {
     const layer = getModalLayer();
@@ -215,8 +214,8 @@ function openModal(options) {
 }
 
 /**
- * The modal guests see when they try to rate, save or upload.
- * It never navigates away on its own.
+The modal guests see when they try to rate, save or upload.
+It never navigates away on its own.
  */
 function showLoginRequiredModal(message) {
     openModal({
@@ -231,7 +230,7 @@ function showLoginRequiredModal(message) {
 }
 
 /**
- * Simple yes or no confirmation, used before deleting a recipe.
+Simple yes or no confirmation, used before deleting a recipe.
  */
 function confirmAction(options) {
     openModal({
@@ -248,12 +247,12 @@ function confirmAction(options) {
     });
 }
 
-/* ---------------------------------------------------------------
+/* 
    Navigation
-   --------------------------------------------------------------- */
+ */
 
 /**
- * Highlights the current page and fills the account area based on the session.
+Highlights the current page and fills the account area based on the session.
  */
 function initNavigation() {
     const current = window.location.pathname.split("/").pop() || "index.html";
@@ -335,13 +334,13 @@ function renderAccountArea() {
     box.appendChild(register);
 }
 
-/* ---------------------------------------------------------------
+/* 
    Images
-   --------------------------------------------------------------- */
+*/
 
 /**
- * Any image that fails to load, including a broken URL typed into the upload
- * form, is swapped for the local placeholder drawing.
+Any image that fails to load, including a broken URL typed into the upload
+form, is swapped for the local placeholder drawing.
  */
 function initImageFallbacks() {
     document.addEventListener(
@@ -362,7 +361,7 @@ function initImageFallbacks() {
 }
 
 /**
- * Hidden gradient used by half-filled rating stars.
+Hidden gradient used by half-filled rating stars.
  */
 function injectStarGradient() {
     if (document.getElementById("sangkapSvgDefs")) {
@@ -380,9 +379,9 @@ function injectStarGradient() {
     document.body.appendChild(wrapper);
 }
 
-/* ---------------------------------------------------------------
+/* 
    Start up
-   --------------------------------------------------------------- */
+ */
 document.addEventListener("DOMContentLoaded", function () {
     initImageFallbacks();
     injectStarGradient();

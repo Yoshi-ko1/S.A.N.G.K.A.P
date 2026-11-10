@@ -29,8 +29,8 @@ function saveBasket(items) {
 }
 
 /**
- * Adds one ingredient. Case and spacing are normalised first, so Chicken,
- * chicken and CHICKEN can never appear twice.
+Adds one ingredient. Case and spacing are normalised first, so Chicken,
+chicken and CHICKEN can never appear twice.
  */
 function addToBasket(rawName) {
     const name = normalizeIngredient(rawName);
@@ -69,9 +69,9 @@ function clearBasket() {
     return [];
 }
 
-/* ---------------------------------------------------------------
+/*
    basket.html
-   --------------------------------------------------------------- */
+*/
 function initBasketPage() {
     const form = document.getElementById("basketForm");
     const input = document.getElementById("ingredientInput");

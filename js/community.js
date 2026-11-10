@@ -1,6 +1,5 @@
 /*
     S.A.N.G.K.A.P. - community.js
-
     The Community page and the recipe upload form.
     Uploaded recipes are stored in the same recipe table as the built-in ones,
     so they are searchable, ratable, and part of ingredient matching straight
@@ -14,8 +13,8 @@ function getCommunityRecipes() {
 }
 
 /**
- * Trending balances how good a recipe is, how many people rated it, and how
- * recently it was posted, so a new recipe is not buried by older favourites.
+Trending balances how good a recipe is, how many people rated it, and how
+recently it was posted, so a new recipe is not buried by older favourites.
  */
 function calculateTrendingScore(recipe) {
     const rating = Number(recipe.rating) || 0;
@@ -73,9 +72,9 @@ function renderCommunityRecipes(container, recipes) {
     renderRecipeCards(container, recipes, { showMatch: false });
 }
 
-/* ---------------------------------------------------------------
+/*
    community.html
-   --------------------------------------------------------------- */
+*/
 function initCommunityPage() {
     const grid = document.getElementById("communityGrid");
     const countLabel = document.getElementById("communityCount");
@@ -139,12 +138,12 @@ function initCommunityPage() {
     render();
 }
 
-/* ---------------------------------------------------------------
+/*
    submit-recipe.html
-   --------------------------------------------------------------- */
+*/
 
 /**
- * Reads the ingredient and instruction rows out of the form.
+Reads the ingredient and instruction rows out of the form.
  */
 function collectRecipeFormData() {
     const ingredients = [];
@@ -212,7 +211,7 @@ function validateRecipeData(data) {
 }
 
 /**
- * Saves a new community recipe for the signed-in user.
+Saves a new community recipe for the signed-in user.
  */
 function submitCommunityRecipe(data, user) {
     const problem = validateRecipeData(data);

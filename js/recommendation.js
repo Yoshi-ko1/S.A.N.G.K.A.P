@@ -35,7 +35,7 @@ const INGREDIENT_ALIASES = {
 };
 
 /**
- * Brings any spelling of an ingredient to one comparable form, so thatChicken, chicken and CHICKEN are all the same thing.
+Brings any spelling of an ingredient to one comparable form, so thatChicken, chicken and CHICKEN are all the same thing.
  */
 function normalizeIngredient(value) {
     if (typeof value !== "string") {
@@ -67,7 +67,7 @@ function normalizeIngredient(value) {
 }
 
 /**
- * Turns a basket array into a lookup set of normalised names.
+Turns a basket array into a lookup set of normalised names.
  */
 function buildBasketSet(basket) {
     const set = new Set();
@@ -81,9 +81,9 @@ function buildBasketSet(basket) {
 }
 
 /**
- * Compares one recipe against the basket.
- * Returns the percentage plus the ingredient lists, which the details page
- * uses for its Available and Missing sections.
+Compares one recipe against the basket.
+Returns the percentage plus the ingredient lists, which the details page
+uses for its Available and Missing sections.
  */
 function calculateIngredientMatch(recipe, basket) {
     const basketSet = basket instanceof Set ? basket : buildBasketSet(basket);
@@ -118,7 +118,7 @@ function calculateIngredientMatch(recipe, basket) {
 }
 
 /**
- * Text badge for a match percentage.
+Text badge for a match percentage.
  */
 function getMatchStatus(percent) {
     const value = Number(percent) || 0;
@@ -167,7 +167,7 @@ function calculateQuicknessScore(cookingTime) {
 }
 
 /**
- * The weighted score that decides the order of the results page.
+The weighted score that decides the order of the results page.
  */
 function calculateRecommendationScore(recipe, ingredientMatch) {
     const match = Number(ingredientMatch) || 0;
@@ -181,7 +181,7 @@ function calculateRecommendationScore(recipe, ingredientMatch) {
 }
 
 /**
- * Wraps a recipe with everything the cards need to display.
+Wraps a recipe with everything the cards need to display.
  */
 function buildRecommendation(recipe, basketSet) {
     const match = calculateIngredientMatch(recipe, basketSet);
@@ -196,8 +196,8 @@ function buildRecommendation(recipe, basketSet) {
 }
 
 /**
- * Scores every recipe against the basket and sorts the best first.
- * Recipes with an identical score fall back to the higher rating.
+Scores every recipe against the basket and sorts the best first.
+Recipes with an identical score fall back to the higher rating.
  */
 function sortRecipeRecommendations(recipes, basket) {
     const basketSet = buildBasketSet(basket);

@@ -28,7 +28,7 @@ function isAnonymous() {
 }
 
 /**
- * The full user record for whoever is signed in, or null for guests.
+The full user record for whoever is signed in, or null for guests.
  */
 function getCurrentUser() {
     if (!isLoggedIn()) {
@@ -38,8 +38,8 @@ function getCurrentUser() {
 }
 
 /**
- * Guests get their own session so the site can tell the difference between
- * "browsing without an account" and "has not chosen yet".
+Guests get their own session so the site can tell the difference between
+"browsing without an account" and "has not chosen yet".
  */
 function createGuestSession() {
     setCurrentSession({
@@ -50,17 +50,17 @@ function createGuestSession() {
     });
 }
 
-/* ---------------------------------------------------------------
+/*
    Registration and login
-   --------------------------------------------------------------- */
+*/
 
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email).trim());
 }
 
 /**
- * Validates the registration form and creates the account.
- * Returns { success, message, user } so the page can show the message itself.
+Validates the registration form and creates the account.
+Returns { success, message, user } so the page can show the message itself.
  */
 function registerUser(details) {
     const username = String(details.username || "").trim();
@@ -125,7 +125,7 @@ function registerUser(details) {
 }
 
 /**
- * Accepts either the username or the email address.
+Accepts either the username or the email address.
  */
 function loginUser(identifier, password) {
     const value = String(identifier || "").trim();
@@ -165,7 +165,7 @@ function loginUser(identifier, password) {
 }
 
 /**
- * Clears the session only. Accounts, recipes, ratings and favorites all stay.
+Clears the session only. Accounts, recipes, ratings and favorites all stay.
  */
 function logoutUser() {
     if (SangkapAPI.enabled) {
@@ -176,14 +176,14 @@ function logoutUser() {
     window.location.href = "login.html";
 }
 
-/* ---------------------------------------------------------------
+/* 
    Protected actions
-   --------------------------------------------------------------- */
+*/
 
 /**
- * Gate for rating, saving, uploading and profile editing.
- * Returns true when the visitor may continue. Guests get a modal instead of
- * an error, and stay on the page they were reading.
+Gate for rating, saving, uploading and profile editing.
+Returns true when the visitor may continue. Guests get a modal instead of
+an error, and stay on the page they were reading.
  */
 function requireLogin(action) {
     if (isLoggedIn()) {
@@ -199,9 +199,9 @@ function requireLogin(action) {
     return false;
 }
 
-/* ---------------------------------------------------------------
+/*
    Login page
-   --------------------------------------------------------------- */
+*/
 function initLoginPage() {
     const form = document.getElementById("loginForm");
     const errorBox = document.getElementById("loginError");
@@ -235,9 +235,9 @@ function initLoginPage() {
     }
 }
 
-/* ---------------------------------------------------------------
+/* 
    Register page
-   --------------------------------------------------------------- */
+*/
 function initRegisterPage() {
     const form = document.getElementById("registerForm");
     const errorBox = document.getElementById("registerError");

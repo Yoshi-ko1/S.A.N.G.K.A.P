@@ -1,22 +1,8 @@
 /*
     S.A.N.G.K.A.P. - upload.js
-
     Lets people choose a picture from their device instead of pasting a link.
     Used by the register page (profile picture), the recipe form (dish picture)
     and the profile editor.
-
-    How it works
-      - A page marks a hidden input with data-image-picker. That input keeps the
-        picture's address, so the rest of the code reads it exactly as before.
-      - This file adds a file chooser, a preview and a Remove button next to it.
-      - The chosen picture is shrunk in the browser (smaller and faster to send),
-        then uploaded to the server, which saves it as a file and returns its path.
-      - With no server (files opened directly), the shrunken picture is kept in the
-        browser instead.
-
-    Options on the hidden input:
-        data-max-side="400"    longest side in pixels after shrinking
-        data-shape="round"     round preview for profile pictures ("wide" otherwise)
 */
 
 const IMAGE_PICKER_TYPES = ["image/jpeg", "image/png", "image/webp"];

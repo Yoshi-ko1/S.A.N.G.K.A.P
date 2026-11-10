@@ -1,10 +1,7 @@
 /*
     S.A.N.G.K.A.P. - ratings.js
-
     Ratings are stored as their own records:
-
         { id, recipeId, userId, rating, dateCreated }
-
     A recipe keeps a running average in recipe.rating and recipe.ratingCount.
     The sample recipes ship with seeded demo ratings held in baseRatingTotal
     and baseRatingCount, and real ratings are added on top of those numbers,
@@ -15,7 +12,7 @@ const STAR_PATH =
     "M12 2.2l2.9 6.05 6.6.9-4.8 4.6 1.2 6.55L12 17.2l-5.9 3.1 1.2-6.55-4.8-4.6 6.6-.9z";
 
 /**
- * Read-only star row used on cards and headers.
+Read-only star row used on cards and headers.
  */
 function renderStars(rating) {
     const value = Math.max(0, Math.min(5, Number(rating) || 0));
@@ -71,8 +68,8 @@ function getUserRatingsCount(userId) {
 }
 
 /**
- * Average rating for one recipe, rounded to one decimal place.
- * Seeded demo ratings and real user ratings are combined here.
+Average rating for one recipe, rounded to one decimal place.
+Seeded demo ratings and real user ratings are combined here.
  */
 function calculateRecipeRating(recipeId) {
     const recipe = getRecipeById(recipeId);
@@ -98,8 +95,8 @@ function calculateRecipeRating(recipeId) {
 }
 
 /**
- * Writes the freshly calculated average back onto the recipe record so that
- * the Community, Featured and results pages all read the same numbers.
+Writes the freshly calculated average back onto the recipe record so that
+the Community, Featured and results pages all read the same numbers.
  */
 function syncRecipeRating(recipeId) {
     const result = calculateRecipeRating(recipeId);
@@ -108,7 +105,7 @@ function syncRecipeRating(recipeId) {
 }
 
 /**
- * Runs once per page load. Only writes when something actually changed.
+Runs once per page load. Only writes when something actually changed.
  */
 function syncAllRecipeRatings() {
     const recipes = getRecipes();
@@ -179,8 +176,8 @@ function updateRating(ratingId, value) {
 }
 
 /**
- * One rating per user per recipe. Rating again replaces the old score
- * instead of adding a second record.
+One rating per user per recipe. Rating again replaces the old score
+instead of adding a second record.
  */
 function submitRating(recipeId, userId, value) {
     const score = Number(value);
@@ -214,9 +211,8 @@ function submitRating(recipeId, userId, value) {
 }
 
 /**
- * Builds the five clickable stars.
- * Guests can click them, but the login modal opens instead of a rating
- * being stored.
+Builds the five clickable stars.
+Guests can click them, but the login modal opens instead of a rating being stored.
  */
 function renderRatingWidget(container, recipeId, onRated) {
     if (!container) {

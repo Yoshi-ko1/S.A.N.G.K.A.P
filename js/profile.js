@@ -1,16 +1,15 @@
 /*
     S.A.N.G.K.A.P. - profile.js
-
     profile.html?id=USR001 shows any member's public profile.
     Editing controls only appear when the signed-in user owns the profile.
-
     getUserRatingsCount() lives in ratings.js since it works on the ratings
     table; it is used here for the statistics row.
 */
 
+
 /**
- * Every recipe uploaded by one member, newest first.
- * The link is recipe.authorId, not the copied author name.
+Every recipe uploaded by one member, newest first.
+The link is recipe.authorId, not the copied author name.
  */
 function getUserRecipes(userId) {
     return getRecipes()
@@ -27,8 +26,8 @@ function getUserFavoritesCount(userId) {
 }
 
 /**
- * Decides whose profile to show: the id in the address bar, or the signed-in
- * user when no id was given.
+Decides whose profile to show: the id in the address bar, or the signed-in 
+user when no id was given.
  */
 function loadProfile() {
     const id = getQueryParam("id");

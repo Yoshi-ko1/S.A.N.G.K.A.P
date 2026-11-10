@@ -519,6 +519,19 @@ button {
     color: var(--ink-soft);
 }
 
+/* for about us description */
+
+.about-hero__title {
+    font-size: 55px;
+    line-height: 1.1;
+}
+
+@media (max-width: 768px) {
+    .about-hero__title {
+        font-size: 36px;
+    }
+}
+
 /* ---------------------------------------------------------------
    6. Cards and grids
    --------------------------------------------------------------- */

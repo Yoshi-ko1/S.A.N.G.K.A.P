@@ -1,7 +1,6 @@
 /*
     S.A.N.G.K.A.P. - database.js
     Shape of the stored data:
-
         database = {
             users: [],
             recipes: [],
@@ -26,8 +25,8 @@ const IMPORTANCE_TO_WEIGHT = {
 };
 
 /**
- * Small helper that builds one recipe ingredient object so the weight can
- * never drift away from the importance level.
+Small helper that builds one recipe ingredient object so the weight can
+never drift away from the importance level.
  */
 function ing(name, importance) {
     return {
@@ -37,11 +36,11 @@ function ing(name, importance) {
     };
 }
 
-/* ---------------------------------------------------------------
+/*
    Sample users
    Simple credentials, on purpose, so the project can be demonstrated
    in class. Every account below uses the password: password123
-   --------------------------------------------------------------- */
+*/
 const DEFAULT_USERS = [
     {
         id: "USR001",
@@ -95,13 +94,13 @@ const DEFAULT_USERS = [
     }
 ];
 
-/* ---------------------------------------------------------------
-   Sample recipes
+/* 
+   Sample recipes 
    The first 25 are built-in kitchen recipes. The last 5 are marked
    as community recipes so the Community page has content on a fresh
    install. Both kinds use the identical structure, which is what lets
    uploaded recipes join the matching system automatically.
-   --------------------------------------------------------------- */
+ */
 const DEFAULT_RECIPES = [
     {
         id: "REC001",
@@ -874,7 +873,7 @@ const DEFAULT_RECIPES = [
         dateCreated: "2026-08-07T09:00:00.000Z"
     },
 
-    /* ----- community uploads that ship with the prototype ----- */
+    /*community uploads that ship with the prototype */
     {
         id: "REC026",
         title: "Creamy Tuna Macaroni",
@@ -1052,15 +1051,15 @@ const DEFAULT_FAVORITES = [
     { userId: "USR003", recipeId: "REC026", dateSaved: "2026-08-26T10:05:00.000Z" }
 ];
 
-/* ---------------------------------------------------------------
+/*
    Initialisation
-   --------------------------------------------------------------- */
+*/
 
 /**
- * Adds the two bookkeeping fields used by the rating system.
- * baseRatingTotal and baseRatingCount hold the seeded demo ratings so that
- * real ratings entered by users can be added on top of them instead of
- * replacing them.
+Adds the two bookkeeping fields used by the rating system.
+baseRatingTotal and baseRatingCount hold the seeded demo ratings so that
+real ratings entered by users can be added on top of them instead of
+replacing them.
  */
 function prepareRecipeRecord(recipe) {
     const prepared = Object.assign({}, recipe);
@@ -1072,8 +1071,8 @@ function prepareRecipeRecord(recipe) {
 }
 
 /**
- * Writes the sample data, but only for collections that do not exist yet.
- * Existing accounts, uploads, ratings and favorites are never overwritten.
+Writes the sample data, but only for collections that do not exist yet.
+Existing accounts, uploads, ratings and favorites are never overwritten.
  */
 function initializeDatabase() {
     if (loadFromLocalStorage(SANGKAP_KEYS.USERS, null) === null) {
@@ -1092,7 +1091,7 @@ function initializeDatabase() {
 }
 
 /**
- * Reads all four collections at once and refreshes the in-memory snapshot.
+Reads all four collections at once and refreshes the in-memory snapshot.
  */
 function loadDatabase() {
     database.users = loadFromLocalStorage(SANGKAP_KEYS.USERS, []);
@@ -1103,7 +1102,7 @@ function loadDatabase() {
 }
 
 /**
- * Writes all four collections at once.
+Writes all four collections at once.
  */
 function saveDatabase(data) {
     const next = data || database;
@@ -1114,7 +1113,7 @@ function saveDatabase(data) {
 }
 
 /**
- * Builds the next unused id for a collection, for example USR006 or REC031.
+Builds the next unused id for a collection, for example USR006 or REC031.
  */
 function generateId(prefix, records) {
     const list = Array.isArray(records) ? records : [];
@@ -1131,9 +1130,9 @@ function generateId(prefix, records) {
     return prefix + String(next).padStart(3, "0");
 }
 
-/* ---------------------------------------------------------------
+/* 
    Users
-   --------------------------------------------------------------- */
+*/
 function getUsers() {
     return loadFromLocalStorage(SANGKAP_KEYS.USERS, []);
 }
@@ -1172,7 +1171,7 @@ function getUserByEmail(email) {
 }
 
 /**
- * Stores a new account. Validation happens in auth.js before this is called.
+Stores a new account. Validation happens in auth.js before this is called.
  */
 function createUser(details) {
     const users = getUsers();
@@ -1219,9 +1218,9 @@ function updateUser(userId, changes) {
     return users[index];
 }
 
-/* ---------------------------------------------------------------
+/*
    Recipes
-   --------------------------------------------------------------- */
+*/
 function getRecipes() {
     return loadFromLocalStorage(SANGKAP_KEYS.RECIPES, []);
 }
@@ -1240,8 +1239,8 @@ function getRecipeById(recipeId) {
 }
 
 /**
- * Adds a recipe built by submit-recipe.html. New uploads start with no
- * ratings at all, so their average is genuinely zero until someone rates them.
+Adds a recipe built by submit-recipe.html. New uploads start with no
+ratings at all, so their average is genuinely zero until someone rates them.
  */
 function addRecipe(recipe) {
     if (SangkapAPI.enabled) {
@@ -1298,8 +1297,8 @@ function updateRecipe(recipeId, changes) {
 }
 
 /**
- * Removes a recipe together with the ratings and favorites that point at it,
- * so no orphan records are left behind.
+Removes a recipe together with the ratings and favorites that point at it,
+so no orphan records are left behind.
  */
 function deleteRecipe(recipeId) {
     if (SangkapAPI.enabled) {
@@ -1327,10 +1326,10 @@ function deleteRecipe(recipeId) {
     return true;
 }
 
-/* ---------------------------------------------------------------
+/*
    Ratings and favorites
    The logic that uses these lives in ratings.js and favorites.js.
-   --------------------------------------------------------------- */
+*/
 function getRatings() {
     return loadFromLocalStorage(SANGKAP_KEYS.RATINGS, []);
 }
