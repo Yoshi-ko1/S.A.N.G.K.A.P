@@ -252,12 +252,12 @@ button {
 }
 
 .brand__mark {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--annatto);
-    position: relative;
-    flex-shrink: 0;
+
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    display: block;
+
 }
 
 .brand__mark::after {
